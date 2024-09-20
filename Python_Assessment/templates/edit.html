@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Edit</title>
+</head>
+
+<body>
+    <h1>Edit a task</h1>
+    <form action="{{ url_for('edit', task_id=task_id) }}" method="post">
+        {{ form.csrf_token }}
+        <div class="col">
+            <h6>Edit task title</h6>
+            <div class="row">
+                
+                
+                    {{ form.title(class="form-control") }}
+                
+            </div>
+        </div><br>
+        <div class="col">
+            <h6>Edit task description</h6>
+            <div class="row">
+                    {{ form.description(class="form-control") }}
+            </div>
+        </div>
+        <br>
+        <div class="col">
+            
+            <div class="row">
+                {{ form.edit(class="btn btn-primary") }}
+            </div>
+            <div class="row">
+                <a href="{{url_for('tasks', page=1)}}" class="btn btn-danger" >Cancel</a>
+            </div>
+
+        </div>
+        </div>
+    </form>
+</body>
+
+</html>

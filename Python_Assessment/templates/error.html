@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Error</title>
+</head>
+<body>
+    {% if error==2%}
+    <h2 id="error">Error: Username has to be unique</h2>
+    <a href="{{ url_for('register') }}">Please, go back and try again</a>
+    {%endif%}
+    {% if error==1 %}
+    <h2 id="error">Error: Wrong credentials</h2>
+    <a href="{{ url_for('index') }}">Please, go back and try again</a>
+    {%endif%}
+    {% if error==3 %}
+    <h2 id="error">Error: Page not found</h2>
+    <a href="{{ url_for('index') }}">Please, go back and try again</a>
+    {%endif%}
+</body>
+</html>

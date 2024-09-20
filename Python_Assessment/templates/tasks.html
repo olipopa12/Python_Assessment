@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Tasks</title>
+</head>
+
+<body>
+
+    <div class="col">
+        <div class="row">
+            <h1>My tasks</h1>
+        </div>
+        <div class="row" id="logout">
+            <a href="{{url_for('logout')}}" class="btn btn-primary">Logout</a>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+
+        {% if tasks|length!=0 %}
+        {% for task in pagination.items %}
+        <div class="task">
+            <!-- <p><b>#{{ task.id }}</b></p> -->
+            <b>
+                <p class="title">{{ task.title }}</p>
+            </b>
+            <p>{{ task.description }}</p>
+
+            {% if task.completition_status %}
+            <p><i>(Completed)</i></p>
+            {% else %}
+            <p><i>(Incompleted)</i></p>
+            <a href="{{url_for('complete', task_id=task.id)}}" class="btn btn-primary">Mark as completed</a>
+            {% endif %}
+            <a href="{{url_for('edit', task_id=task.id)}}" class="btn btn-primary">Edit</a>
+            <a href="{{url_for('add')}}" class="btn btn-primary">Add task</a>
+            <a href="{{url_for('delete', task_id=task.id)}}" class="btn btn-danger">Delete</a>
+        </div>
+            {% endfor %}
+            {% endif %}
+            {% if tasks|length==0 %}
+            <h4 id="no_tasks">No tasks yet</h4><br>
+            <a href="{{url_for('add')}}" class="btn btn-primary">Add task</a>
+            {% endif %}
+            <br>
+
+
+    </div>
+
+    <!-- only if there are more that 2 tasks to show -->
+    {% if tasks|length>2 %}  
+    <div class="pagination">
+        {% if pagination.has_prev %}
+            <span>
+                <a class='page-number' href="{{ url_for('tasks', page=pagination.prev_num) }}">
+                    {{ '<<<' }}
+                </a>
+            </span>
+        {% endif %}
+    
+        {% for number in pagination.iter_pages() %}
+            {% if pagination.page != number %}
+                <span>
+                        <a class='page-number'
+                            href="{{ url_for('tasks', page=number) }}">
+                        {{ number }}
+                        </a>
+                </span>
+            {% else %}
+                <span class='current-page-number'>{{ number }}</span>
+            {% endif %}
+        {% endfor %}
+    
+        {% if pagination.has_next %}
+            <span>
+                <a class='page-number'
+                    href="{{ url_for('tasks', page=pagination.next_num) }}">
+                    {{ '>>>' }}
+                </a>
+            </span>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+
+</html>

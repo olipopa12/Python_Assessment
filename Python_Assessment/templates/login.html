@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Login page</h1>
+
+
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="col">
+            <div class="row">
+                {{ form.username(class="form-control") }}
+            </div>
+        </div> <br>
+
+        <div class="col">
+            <div class="row">
+                {{ form.password(class="form-control") }}
+            </div>
+        </div> <br>
+        <div id="login"> {{ form.submit(class="btn btn-primary") }}</div>
+    </form><br>
+
+    <a id="sign" href="{{ url_for('register') }}">Don't have an account yet? Please, sign up</a>
+</body>
+
+</html>
