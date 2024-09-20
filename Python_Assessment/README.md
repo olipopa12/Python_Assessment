@@ -1,24 +1,24 @@
 
 For the implementation of the REST API I have used the Flask framework. Following are the packages that need to be installed in order the application to run:
 
-# installing Flask
+>installing Flask
 pip install Flask
 
-# use flask forms 
+>use flask forms 
 pip install flask_wtf
 
-# SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL
-# work with data as Python objects
+> SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL
+> work with data as Python objects
 pip install Flask-SQLAlchemy 
 
-# Flask extension that provides bcrypt hashing utilities
+> Flask extension that provides bcrypt hashing utilities
 pip install flask-bcrypt
 
-# provides user session management for Flask
+> provides user session management for Flask
 pip install flask-login
 
 
-To run the application use the following command and then follow the "Running on" link that will appear on your console:
+To run the application go the project folder and use the following command. Then follow the "Running on" link that will appear on your console:
 
 python -m flask run
 
